@@ -1,0 +1,16 @@
+{
+  "name": "part2",
+  "version": "1.0.0",
+  "description": "Mobile Application Development Ex1-Part2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "express": "^4.16.3"
+  }
+}

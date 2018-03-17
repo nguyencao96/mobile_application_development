@@ -4,7 +4,7 @@ const distanceService = require('./services/distanceService.js');
 
 const app = express();
 const APP_PORT = '8080';
-const APP_HOST = 'localhost';
+const APP_HOST = '127.0.0.1';
 
 app.set('port', APP_PORT);
 app.set('host', APP_HOST);

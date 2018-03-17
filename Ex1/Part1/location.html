@@ -21,14 +21,13 @@ function httpGetRequest(theUrl, callback) {
         if (xmlHttp.readyState == 4 && (xmlHttp.status == 200 || xmlHttp.status == 400) )
             callback(xmlHttp.responseText);
     }
-    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.open("GET", theUrl, true);
     xmlHttp.send(null);
 }
 function getLocation(){
     const url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + $('#latitude').val() + "," + $('#longitude').val() + "&key=AIzaSyAx4W8C_O5Yw2k8C2_FqhoQJp7jJx-L4JE";
     httpGetRequest(url, function (location){
         const res = JSON.parse(location);
-        console.log(res)
         if (!res.error_message)
             $('#result').text(res.results[0].formatted_address);
         else

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Find Location</title>
+</head>
+
+<body>
+    <label>Latitude</label>
+    <input type="number" id="latitude">
+    <label>Longitude</label>
+    <input type="number" id="longitude">
+    <button onclick="getLocation()">Get location</button>
+    <label id="result"></label>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+function httpGetRequest(theUrl, callback) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && (xmlHttp.status == 200 || xmlHttp.status == 400) )
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+function getLocation(){
+    const url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + $('#latitude').val() + "," + $('#longitude').val() + "&key=AIzaSyAx4W8C_O5Yw2k8C2_FqhoQJp7jJx-L4JE";
+    httpGetRequest(url, function (location){
+        const res = JSON.parse(location);
+        console.log(res)
+        if (!res.error_message)
+            $('#result').text(res.results[0].formatted_address);
+        else
+        $('#result').text("Invalid latitude or longtitude value");
+        
+    });
+}
+</script>
